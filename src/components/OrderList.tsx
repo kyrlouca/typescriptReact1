@@ -3,18 +3,11 @@ import React, {
   FunctionComponent,
   FunctionComponentElement
 } from 'react';
-import { isTemplateElement } from '@babel/types';
 
-export type TOrderRec = {
-  custId: string;
-  orderId: string;
-  orderValue: number;
-  customerName:string;
-  dateCreated: string;
-};
+import {TStateOrder} from '../storage/order-reducer';
 
 
-const ListItem = ( props: {item : TOrderRec} )  => {
+const ListItem = ( props: {item : TStateOrder} )  => {
   const { custId, orderId, orderValue,dateCreated,customerName } = props.item;
   return (
     <div>
@@ -23,7 +16,7 @@ const ListItem = ( props: {item : TOrderRec} )  => {
   );
 };
 
-export default function OrderList(props: { items: TOrderRec[] }) {
+export default function OrderList(props: { items: TStateOrder[] }) {
   return (
     <div>
       {props.items.map(x => (
