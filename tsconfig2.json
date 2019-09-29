@@ -1,0 +1,11 @@
+{
+  "include": ["temp.ts"],
+  "exclude": ["src","node_models"],
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "outDir": "out",
+    "sourceMap": true,
+    "moduleResolution": "node"
+  }
+}
