@@ -12,7 +12,7 @@ export type TFullOrder = {
   TABLE_NAME: string;
 };
 
-export default async function fetchActions(custId: string) {
+async function fetchAsyncOrders(custId: string) {
   const AllData = await axios({
     method: 'get',
     url: `https://mmr2lzukua.execute-api.eu-west-2.amazonaws.com/Prod/orders`,
@@ -22,3 +22,7 @@ export default async function fetchActions(custId: string) {
   const rData: TFullOrder[] = AllData.data.Items;
   return rData;
 }
+
+export const fetchActions = {
+  fetchAsyncOrders
+};

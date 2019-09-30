@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useRef } from 'react';
 import orderReducer, { TStateShape, TStateOrder } from '../storage/order-reducer';
 import OrderList from './OrderList';
-import fetchActions, { TFullOrder } from '../storage/fetch-actions';
+import  { TFullOrder } from '../storage/fetch-actions';
 import InputCustomer from './InputCustomer';
 import allActions from '../storage/reducer-actions';
 
@@ -22,14 +22,6 @@ export default function OrderContainer() {
   // const [orderList, setOrderList] = useState(initOrders);
   const [state, dispatch] = useReducer(orderReducer, initialState);
   const redActions= allActions(dispatch);
-
-  const handleFetchOld = async (custId: string) => {
-    const data = await fetchActions(custId);
-    const mData = shapeReducerItems(data);
-    // setOrderList(mData);
-    dispatch({ type: 'FETCH', payload: mData });
-    console.log(custId);
-  };
 
   const handleFetch = async (custId: string) => {
     redActions.fetchOrders(custId);

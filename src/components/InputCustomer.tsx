@@ -9,7 +9,7 @@ export default function InputCustomer({fetchData}: {fetchData:(val:string)=>Prom
     const [customerId, setCustomerId] = useState('');
 
     const handleChange=(e:InputEvent)=>{
-        setCustomerId(e.currentTarget.value)
+        setCustomerId(e.currentTarget.value.toUpperCase())
       }
     
     const handleClick=()=>{
