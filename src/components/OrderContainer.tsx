@@ -3,6 +3,7 @@ import orderReducer, { TStateShape, TStateOrder } from '../storage/order-reducer
 import OrderList from './OrderList';
 import fetchActions, { TFullOrder } from '../storage/fetch-actions';
 import InputCustomer from './InputCustomer';
+import allActions from '../storage/reducer-actions';
 
 const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
   const cData: TStateOrder[] = allData.map((el: TFullOrder) => ({
@@ -15,19 +16,24 @@ const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
   return cData;
 };
 
-const initialState: TStateShape = { customerId: '', items: [] };
+const initialState : TStateShape={customerId:'',items:[]};
 
 export default function OrderContainer() {
-  let initOrders: TStateOrder[] = [];
   // const [orderList, setOrderList] = useState(initOrders);
   const [state, dispatch] = useReducer(orderReducer, initialState);
+  const redActions= allActions(dispatch);
 
-  const handleFetch = async (custId: string) => {
+  const handleFetchOld = async (custId: string) => {
     const data = await fetchActions(custId);
     const mData = shapeReducerItems(data);
     // setOrderList(mData);
     dispatch({ type: 'FETCH', payload: mData });
     console.log(custId);
+  };
+
+  const handleFetch = async (custId: string) => {
+    redActions.fetchOrders(custId);
+    
   };
 
   return (
