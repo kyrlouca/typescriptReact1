@@ -4,6 +4,7 @@ import orderReducer, {
   TStateShape
 } from './order-reducer';
 import  { fetchActions, TFullOrder } from './fetch-actions';
+import { Dispatch } from 'react';
 
 const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
   const cData: TStateOrder[] = allData.map((el: TFullOrder) => ({
@@ -18,8 +19,9 @@ const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
 
 
 
-const allActions = (dispatch: (action:TReducerAction)=>any) => {
-// const allActions = (dispatch: (action: TReducerAction) => TStateShape) => {
+
+// const allActions = (dispatch: (action:TReducerAction)=>any) => {
+const allActions = (dispatch: Dispatch<TReducerAction> ) => {
   const fetchOrders = async (custId: string) => {
     const data = await fetchActions.fetchAsyncOrders(custId);
     const mData = shapeReducerItems(data);
