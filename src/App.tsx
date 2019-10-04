@@ -2,14 +2,15 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainGrid from './components/MainGrid';
+import Store from './storage/Store';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <Store>
       <BrowserRouter>
         <MainGrid />
       </BrowserRouter>
-    </div>
+    </Store>
   );
 };
 

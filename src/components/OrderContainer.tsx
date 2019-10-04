@@ -1,9 +1,13 @@
 import React, { useState, useReducer, useRef } from 'react';
-import orderReducer, { TStateShape, TStateOrder } from '../storage/order-reducer';
+import orderReducer, {
+  TStateShape,
+  TStateOrder
+} from '../storage/order-reducer';
 import OrderList from './OrderList';
-import  { TFullOrder } from '../storage/fetch-actions';
+import { TFullOrder } from '../storage/fetch-actions';
 import InputCustomer from './InputCustomer';
-import allActions from '../storage/reducer-actions';
+import getActions from '../storage/use-store-actions';
+import getData from '../storage/use-store-state';
 
 const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
   const cData: TStateOrder[] = allData.map((el: TFullOrder) => ({
@@ -16,23 +20,22 @@ const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
   return cData;
 };
 
-const initialState : TStateShape={customerId:'',items:[]};
+const initialState: TStateShape = { customerId: '', items: [] };
 
 export default function OrderContainer() {
-  // const [orderList, setOrderList] = useState(initOrders);
-  const [state, dispatch] = useReducer(orderReducer, initialState);
-  const redActions= allActions(dispatch);
+  const allActions=getActions();
+  const allData=getData();
+
 
   const handleFetch = async (custId: string) => {
-    redActions.fetchOrders(custId);
-    
+    allActions.fetchOrders(custId);
   };
 
   return (
     <div>
-      Hello Order Container322
+      Hello Order Container322234abc
       <InputCustomer fetchData={handleFetch} />
-      <OrderList items={state.items} />
+      <OrderList items={allData.items} />
     </div>
   );
 }

@@ -15,9 +15,9 @@ export type TStateShape= {
 export type TpayLoad =TStateOrder[];
 export type TReducerAction={ type: string; payload: TStateOrder[] }
 
-const initialState : TStateShape={customerId:'', items:[]};
+export const initialState : TStateShape={customerId:'xxx', items:[]};
 
-type TReducer<S, A> = (prevState: S, action: A) => S;
+// type TReducer<S, A> = (prevState: S, action: A) => S;
 
 // export const orderReducer = (
 //   state:TStateShape,action:TReducerAction
