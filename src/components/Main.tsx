@@ -2,44 +2,34 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 import styled from 'styled-components';
 import OrderContainer from './OrderContainer';
+import Screen1 from './Screen1';
 
-
-
-
-function Screen1() {
-  const S1 = styled.div`
-    background: yellow;
-    color: blue;
+function Screen1Div() {
+  const S1 = styled.div`    
+    height: 100%;
+    width: 340px;
+    margin: 0;
+    padding: 0;
   `;
-  const handleScreen1 = () => {
-    alert('screen 1');
-  };
+
   return (
     <S1>
-      Function 1<button onClick={handleScreen1}>Press me</button>
+      <Screen1 />
     </S1>
   );
 }
-function Screen2() {
-  return <div>Function 200</div>;
-}
 
 const MainDiv = styled.div`
-  background: green;
-  height: 100%;
-`;
-const Screen2Div = styled(Screen2)`
-  width: 600px;
+  background: red;
 `;
 
 export default function Main() {
   return (
     <MainDiv>
       <Switch>
-         <Route path="/home" exact component={Screen2Div} />
+         <Route path="/home" exact component={Screen1Div} />
                 
         <Route path="/settings" exact component={OrderContainer} />
-        
       </Switch>
     </MainDiv>
   );
