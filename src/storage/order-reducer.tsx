@@ -15,14 +15,10 @@ export type TStateShape= {
 export type TpayLoad =TStateOrder[];
 export type TReducerAction={ type: string; payload: TStateOrder[] }
 
-const initialState : TStateShape={customerId:'', items:[]};
+export const initialState : TStateShape={customerId:'INIT', items:[]};
 
-type TReducer<S, A> = (prevState: S, action: A) => S;
 
-// export const orderReducer = (
-//   state:TStateShape,action:TReducerAction
-// ) :TStateShape =>  {
-
+// FULL Defs
 // export const orderReducer :React.Reducer<TStateShape,TReducerAction> = (
 //   state, action
 // ) :TStateShape=> {
@@ -35,7 +31,7 @@ function  orderReducer(
     action.type //action may not have type like redux
   ) {
     case 'RESET':
-      return initialState;
+      return state;
     case 'FETCH':
       const newShape= {...state, items: [...action.payload]}
       return newShape;

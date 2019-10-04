@@ -1,10 +1,12 @@
+import React, { Dispatch, useReducer, useContext } from 'react';
+import OrdersContext,{TOrderContext} from './Store';
 import orderReducer, {
   TStateOrder,
   TReducerAction,
   TStateShape
 } from './order-reducer';
 import  { fetchActions, TFullOrder } from './fetch-actions';
-import { Dispatch } from 'react';
+
 
 const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
   const cData: TStateOrder[] = allData.map((el: TFullOrder) => ({
@@ -18,15 +20,17 @@ const shapeReducerItems = (allData: TFullOrder[]): TStateOrder[] => {
 };
 
 
-
-
-// const allActions = (dispatch: (action:TReducerAction)=>any) => {
-const allActions = (dispatch: Dispatch<TReducerAction> ) => {
+// const allActions = (dispatch: Dispatch<TReducerAction> ) => {
+const useActions = ( ) => {
+  // const {dispatch} =useContext<TOrderContext>(OrdersContext);
   const fetchOrders = async (custId: string) => {
+    
+    // const {state,dispatch} = useReducer(OrdersContext)
+    
     const data = await fetchActions.fetchAsyncOrders(custId);
     const mData = shapeReducerItems(data);
     // setOrderList(mData);
-    dispatch({ type: 'FETCH', payload: mData });
+    // dispatch({ type: 'FETCH', payload: mData });
     console.log(custId);
   };
 
@@ -34,4 +38,5 @@ const allActions = (dispatch: Dispatch<TReducerAction> ) => {
     fetchOrders
   };
 };
-export default allActions;
+
+// export default allActions;
