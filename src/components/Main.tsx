@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 import styled from 'styled-components';
 import OrderContainer from './OrderContainer';
+import Sample1 from './Sample1'
 
 
 
@@ -36,7 +37,7 @@ export default function Main() {
   return (
     <MainDiv>
       <Switch>
-         <Route path="/home" exact component={Screen2Div} />
+         <Route path="/home" exact component={Sample1}/>
                 
         <Route path="/settings" exact component={OrderContainer} />
         

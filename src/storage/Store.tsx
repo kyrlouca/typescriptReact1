@@ -1,14 +1,20 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
 // export default function Store({children}:{children:<HTMLElement>} ) {
-type FType = { 
-  children: JSX.Element;
-  titel:string
-};
-export default function Store({children }: FType) {
+
+type Tperson ={
+  name: string;
+}
+const initialPerson :Tperson= {
+  name:'abc Initial person'
+}
+
+export const StoreContext = React.createContext(initialPerson);
+
+export default function Store({children }: {children:JSX.Element}) {
   return (
-    <div>
+    <StoreContext.Provider value={initialPerson}>
       {children}      
-    </div>
+    </StoreContext.Provider>
   );
 }
