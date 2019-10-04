@@ -6,7 +6,7 @@ type Tperson ={
   name: string;
 }
 const initialPerson :Tperson= {
-  name:'abc Initial person'
+  name:'abc Initial person after use'
 }
 
 export const StoreContext = React.createContext(initialPerson);

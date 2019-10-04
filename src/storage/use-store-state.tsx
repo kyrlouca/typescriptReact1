@@ -1,10 +1,6 @@
 import React, {useContext} from 'react'
 import {StoreContext} from './Store';
-export default function StoreState() {
+export default function useStoreState() {
     const obj=useContext(StoreContext);
-    return (
-        <div>
-            {obj.name}
-        </div>
-    )
+    return obj;    
 }
